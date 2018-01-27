@@ -1,0 +1,90 @@
+//
+//  NoteMark.pch
+//  NoteMark
+//
+//  Created by 朱亚杰 on 2017/12/4.
+//  Copyright © 2017年 朱亚杰. All rights reserved.
+//
+
+#ifndef NoteMark_pch
+#define NoteMark_pch
+
+
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import "DownloadData.h"
+#import "MJExtension.h"
+#import "MJRefresh.h"
+#import "UIImageView+WebCache.h"
+#import "UINavigationController+FDFullscreenPopGesture.h"
+#import "NSObject+Tips.h"
+#import "DateUtils.h"
+#import <Masonry.h>
+#import "YJTool.h"
+
+#endif
+
+// 处于开发阶段
+#ifdef DEBUG
+#define YJLog(...) NSLog(__VA_ARGS__)
+#else
+
+// 处于发布阶段
+#define YJLog(...)
+
+#endif
+
+#define iPoneVersion [[UIDevice currentDevice] systemVersion].floatValue
+
+// RGBA颜色
+#define RGBACOLOR(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+// RGB颜色
+#define RGBCOLOR(r, g, b) RGBACOLOR(r, g, b, 1)
+
+// 随机色
+#define YJRandomColor RGBACOLOR(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), 1)
+
+#define GlobalColor RGBCOLOR(250, 140, 160)
+#define GlobalBGColor RGBCOLOR(245, 245, 245)
+
+
+#define TextDardColor RGBCOLOR(80, 80, 80)
+#define TextLightColor RGBCOLOR(210, 210, 210)
+
+#define TextBgPurpleColor RGBCOLOR(205, 150, 240)
+#define TextBgPurpleLightColor RGBCOLOR(216, 191, 216)  // #D8BFD8  浅紫色，开始结束为同一天
+
+#define TextBgPinkDarkColor RGBCOLOR(245, 100, 110)     //  深粉色，开始
+#define TextBgPinkColor RGBCOLOR(250, 105, 130)         //  粉色，中间
+#define TextBgPinkLightColor RGBCOLOR(255, 110, 150)    //  浅粉色，结束
+
+
+#define TextBgBlueColor RGBCOLOR(210, 240, 255)
+#define TextEnableColor RGBCOLOR(225, 215, 215)
+//导航高度
+#define NAVIGATTIONHEIHT 44
+//导航和状态栏高度
+#define NAVIGATION_ADD_STATUSBAR_HEIGHT 64
+//tabbar高度
+#define NAVBAR_HEIGHT 49
+
+#define MarginWidth 10
+#define MaxViewWidth (SCREEN_WIDTH - MarginWidth * 2)
+
+/**
+ *  屏幕宽度
+ */
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+
+/**
+ *  屏幕高度
+ */
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* NoteMark_pch */
