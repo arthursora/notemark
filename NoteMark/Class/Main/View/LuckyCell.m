@@ -21,7 +21,7 @@
 
 + (instancetype)cellWithTableView:(UITableView *)tableView {
     
-    static NSString *ID = @"driveCell";
+    static NSString *ID = @"luckyCell";
     LuckyCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
         cell = [[NSBundle mainBundle] loadNibNamed:@"LuckyCell" owner:nil options:nil][0];
@@ -49,7 +49,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     
-//    [super setSelected:selected animated:animated];
+    [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }

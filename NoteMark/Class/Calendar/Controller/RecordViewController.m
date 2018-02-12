@@ -39,6 +39,7 @@
         
         UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 40)];
         nameLabel.text = i == 0 ? @"开始日期" : @"结束日期";
+        nameLabel.textColor = TextDardColor;
         nameLabel.font = [UIFont systemFontOfSize:15.0];
         [bgView addSubview:nameLabel];
         
@@ -70,12 +71,12 @@
         [_endSwitch setOn:YES animated:YES];
     }
     
-    UIButton *bookButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    bookButton.frame = CGRectMake(MarginWidth, 100, MaxViewWidth, 40);
-    bookButton.backgroundColor = TextBgBlueColor;
-    [bookButton setTitle:@"保存" forState:UIControlStateNormal];
-    [bookButton addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:bookButton];
+    UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    submitButton.frame = CGRectMake(MarginWidth, 100, MaxViewWidth, 40);
+    submitButton.backgroundColor = TextBgBlueColor;
+    [submitButton setTitle:@"保存" forState:UIControlStateNormal];
+    [submitButton addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:submitButton];
 }
 
 - (void)buttonClicked {

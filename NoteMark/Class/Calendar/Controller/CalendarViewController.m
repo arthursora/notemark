@@ -79,7 +79,7 @@ static const CGFloat scrollViewHeight = 330;
     _indexDay = _currentDay;
     
     CGFloat weekHeight = 30;
-    UIView *weekView = [[UIView alloc] initWithFrame:CGRectMake(0, 2, SCREEN_WIDTH, weekHeight)];
+    UIView *weekView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, weekHeight)];
     weekView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:weekView];
     

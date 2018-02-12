@@ -10,4 +10,6 @@
 
 @interface RecordLuckyViewController : UIViewController
 
+@property (nonatomic, strong) NSDictionary *luckyDict;
+
 @end

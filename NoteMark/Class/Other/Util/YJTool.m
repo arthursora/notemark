@@ -28,35 +28,109 @@ static FMDatabase *_db;
     
     // 1.打开数据库
     NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"yiju.sqlite"];
+    
+//    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"commentTarget.sqlite"];
+    
     _db = [FMDatabase databaseWithPath:path];
     [_db open];
     
-    //  创建存放小幸运的数据库
+    //  创建 日常 表
     [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS lucky (id integer PRIMARY KEY AUTOINCREMENT, recordDate text NOT NULL, content text NOT NULL, imgData blob NOT NULL);"];
     
-    //  创建存放时间段的数据库
+    //  创建 生理期时间段 表
     [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS period (id integer PRIMARY KEY AUTOINCREMENT, startTime text, endTime text);"];
+    
+    //  创建 目标 表
+    [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS target (id integer PRIMARY KEY AUTOINCREMENT, name text NOT NULL, startTime text NOT NULL, lastJoinTime text, joinTime int NOT NULL, totalDays int, continueDays int, expectDays int NOT NULL, award text NOT NULL);"];
+}
+
+#pragma mark 添加小目标
++ (BOOL)addTarget:(TargetModel *)target {
+    
+    NSString *recordDate = [self getCurrentTime];
+    BOOL result;
+    
+    if (target.targetId) {
+        
+        result = [_db executeUpdateWithFormat:@"UPDATE target SET name = %@, joinTime = %ld, expectDays = %ld, award = %@ WHERE id = %ld", target.name, target.joinTime, target.expectDays, target.award, target.targetId];
+        
+        [self addLog:@"改变小目标" result:result];
+    }else {
+        result = [_db executeUpdateWithFormat:@"INSERT INTO target(name, startTime, joinTime, expectDays, award) values (%@, %@, %ld, %ld, %@)", target.name, recordDate, target.joinTime, target.expectDays, target.award];
+        
+        [self addLog:@"增加小目标" result:result];
+    }
+    return result;
+}
+
++ (BOOL)deleteTarget:(NSInteger)targetId {
+    
+    BOOL result = [_db executeUpdateWithFormat:@"DELETE FROM target where id == %ld", targetId];
+    [self addLog:@"删除小目标" result:result];
+    return result;
+}
+
+#pragma mark - private methods
++ (void)addLog:(NSString *)text result:(BOOL)result {
+    
+    NSString *sucorFailStr = @"Failure";
+    if (result) {
+        sucorFailStr = @"Success";
+    }
+    YJLog(@"----%@ %@!----", text, sucorFailStr);
+}
+
++ (NSString *)getCurrentTime {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
+    return [dateFormatter stringFromDate:[NSDate date]];
+}
+
+#pragma mark 查询记录列表
++ (NSMutableArray *)queryTargets {
+    
+    FMResultSet *set = [_db executeQuery:@"SELECT * FROM target order by startTime desc"];
+    NSMutableArray *infoArr = [NSMutableArray array];
+    
+    while (set.next) {
+        
+        TargetModel *targetModel = [[TargetModel alloc] init];
+        targetModel.targetId = [set intForColumn:@"id"];
+        targetModel.name = [set stringForColumn:@"name"];
+        targetModel.startTime = [set stringForColumn:@"name"];
+        targetModel.joinTime = [set intForColumn:@"joinTime"];
+        targetModel.expectDays = [set intForColumn:@"expectDays"];
+        targetModel.award = [set stringForColumn:@"award"];
+        targetModel.lastJoinTime = [set stringForColumn:@"lastJoinTime"];
+        targetModel.totalDays = [set intForColumn:@"totalDays"];
+        targetModel.continueDays = [set intForColumn:@"continueDays"];
+        
+        [infoArr addObject:targetModel];
+    }
+    return infoArr;
 }
 
 #pragma mark 添加记录
 + (BOOL)addLucky:(NSString *)text image:(NSData *)image {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm";
-    NSString *recordDate = [dateFormatter stringFromDate:[NSDate date]];
+    NSString *recordDate = [self getCurrentTime];
     
     BOOL result = [_db executeUpdateWithFormat:@"INSERT INTO lucky(recordDate, content, imgData) values (%@, %@, %@)", recordDate, text, image];
     
-    if (result) {
-        YJLog(@"----增加记录OK!----");
-    }else {
-        YJLog(@"----增加记录失败!----");
-    }
+    [self addLog:@"增加小幸运" result:result];
+    return result;
+}
+
++ (BOOL)deleteLucky:(NSInteger)luckyId {
+    
+    BOOL result = [_db executeUpdateWithFormat:@"DELETE FROM lucky where id == %ld", luckyId];
+    [self addLog:@"删除小幸运" result:result];
     return result;
 }
 
 #pragma mark 查询记录列表
-+ (NSArray *)queryLuckies {
++ (NSMutableArray *)queryLuckies {
     
     FMResultSet *set = [_db executeQuery:@"SELECT * FROM lucky order by recordDate desc"];
     NSMutableArray *infoArr = [NSMutableArray array];
@@ -89,7 +163,7 @@ static FMDatabase *_db;
     }else {
         
         //  都存在择需要查询
-        sql = [[NSString alloc] initWithFormat:@"SELECT * FROM period WHERE startTime = '%@' or endTime = '%@'", startTime, startTime];
+        sql = [[NSString alloc] initWithFormat:@"SELECT * FROM period WHERE startTime == '%@' or endTime == '%@'", startTime, startTime];
     }
     
     FMResultSet *set = [_db executeQuery:sql];
@@ -150,10 +224,7 @@ static FMDatabase *_db;
         result = [_db executeUpdateWithFormat:@"INSERT INTO period(startTime, endTime) values (%@, %@)", startTime, endTime];
     }
     
-    if (result) {
-    }else {
-        YJLog(@"----增加记录失败!----");
-    }
+    [self addLog:@"增加记录" result:result];
     return result;
 }
 
@@ -222,9 +293,7 @@ static FMDatabase *_db;
     result = [_db executeUpdateWithFormat:@"UPDATE period SET endTime = '' WHERE endTime == %@", recordTime];
     result = [_db executeUpdateWithFormat:@"DELETE FROM period where startTime == '' and endTime == '' "];
     
-    if (!result) {
-        YJLog(@"=====删除数据失败!=====");
-    }
+    [self addLog:@"删除日期数据" result:result];
     return result;
 }
 

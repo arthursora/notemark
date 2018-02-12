@@ -8,15 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		13EADF3299977977503C2A30 /* libPods-NoteMark.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 737BB50EF460E54568852F70 /* libPods-NoteMark.a */; };
+		9515068F2025B65D0093C769 /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9515068B2025B65D0093C769 /* RecordViewController.m */; };
+		951506902025B65D0093C769 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9515068E2025B65D0093C769 /* CalendarViewController.m */; };
+		951506932025B7850093C769 /* TargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951506922025B7850093C769 /* TargetViewController.m */; };
+		9515069C2025C9B80093C769 /* TargetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9515069A2025C9B80093C769 /* TargetModel.m */; };
 		958DCDF52015B3240087D28A /* YJNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958DCDF42015B3240087D28A /* YJNavigationViewController.m */; };
-		959173AE20185591008EADDE /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959173AD20185591008EADDE /* CalendarViewController.m */; };
 		959173B220185E0F008EADDE /* RecordLuckyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959173B120185E0F008EADDE /* RecordLuckyViewController.m */; };
 		959173B520186DBA008EADDE /* CustomAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 959173B320186DBA008EADDE /* CustomAlertView.m */; };
 		959173B920187D73008EADDE /* LuckyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 959173B720187D73008EADDE /* LuckyCell.m */; };
 		959173BA20187D73008EADDE /* LuckyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959173B820187D73008EADDE /* LuckyCell.xib */; };
 		95A6ECC01FFF0E9F00677FD1 /* YJTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A6ECBF1FFF0E9F00677FD1 /* YJTool.m */; };
 		95C337ED201B02F8007D35FC /* UINavigationController+FDFullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C337EC201B02F8007D35FC /* UINavigationController+FDFullscreenPopGesture.m */; };
-		95C4792E200DCCA80079E0EE /* RecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C4792D200DCCA80079E0EE /* RecordViewController.m */; };
 		95D2210F1FD5403600A29600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95D2210E1FD5403600A29600 /* Assets.xcassets */; };
 		95D221121FD5403600A29600 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D221101FD5403600A29600 /* LaunchScreen.storyboard */; };
 		95D221151FD5403600A29600 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D221141FD5403600A29600 /* main.m */; };
@@ -35,6 +37,10 @@
 		95D221611FD5432400A29600 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D221601FD5432400A29600 /* AppDelegate.m */; };
 		95D79CD22005E9130036AE2E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D79CD12005E9130036AE2E /* MainViewController.m */; };
 		95EDA0BF1FD54DC8002C14B8 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EDA0BE1FD54DC8002C14B8 /* DateUtils.m */; };
+		95F3A8062028248400721309 /* TargetNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F3A8052028248400721309 /* TargetNoteViewController.m */; };
+		95F3A80D20285B7500721309 /* YJPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F3A80C20285B7500721309 /* YJPickerView.m */; };
+		95F3A8112028823F00721309 /* TargetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F3A80F2028823F00721309 /* TargetCell.m */; };
+		95F3A8122028823F00721309 /* TargetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95F3A8102028823F00721309 /* TargetCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +62,16 @@
 
 /* Begin PBXFileReference section */
 		737BB50EF460E54568852F70 /* libPods-NoteMark.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NoteMark.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9515068B2025B65D0093C769 /* RecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
+		9515068C2025B65D0093C769 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		9515068D2025B65D0093C769 /* RecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		9515068E2025B65D0093C769 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		951506912025B7850093C769 /* TargetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetViewController.h; sourceTree = "<group>"; };
+		951506922025B7850093C769 /* TargetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetViewController.m; sourceTree = "<group>"; };
+		9515069A2025C9B80093C769 /* TargetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetModel.m; sourceTree = "<group>"; };
+		9515069B2025C9B80093C769 /* TargetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetModel.h; sourceTree = "<group>"; };
 		958DCDF32015B3240087D28A /* YJNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJNavigationViewController.h; sourceTree = "<group>"; };
 		958DCDF42015B3240087D28A /* YJNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJNavigationViewController.m; sourceTree = "<group>"; };
-		959173AC20185591008EADDE /* CalendarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
-		959173AD20185591008EADDE /* CalendarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		959173B020185E0F008EADDE /* RecordLuckyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordLuckyViewController.h; sourceTree = "<group>"; };
 		959173B120185E0F008EADDE /* RecordLuckyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordLuckyViewController.m; sourceTree = "<group>"; };
 		959173B320186DBA008EADDE /* CustomAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAlertView.m; sourceTree = "<group>"; };
@@ -71,8 +83,6 @@
 		95A6ECBF1FFF0E9F00677FD1 /* YJTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJTool.m; sourceTree = "<group>"; };
 		95C337EB201B02F8007D35FC /* UINavigationController+FDFullscreenPopGesture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FDFullscreenPopGesture.h"; sourceTree = "<group>"; };
 		95C337EC201B02F8007D35FC /* UINavigationController+FDFullscreenPopGesture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FDFullscreenPopGesture.m"; sourceTree = "<group>"; };
-		95C4792C200DCCA80079E0EE /* RecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
-		95C4792D200DCCA80079E0EE /* RecordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordViewController.m; sourceTree = "<group>"; };
 		95D221021FD5403600A29600 /* NoteMark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoteMark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D2210E1FD5403600A29600 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95D221111FD5403600A29600 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -112,6 +122,13 @@
 		95D79CD12005E9130036AE2E /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		95EDA0BD1FD54DC8002C14B8 /* DateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
 		95EDA0BE1FD54DC8002C14B8 /* DateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
+		95F3A8042028248400721309 /* TargetNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetNoteViewController.h; sourceTree = "<group>"; };
+		95F3A8052028248400721309 /* TargetNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetNoteViewController.m; sourceTree = "<group>"; };
+		95F3A80B20285B7500721309 /* YJPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YJPickerView.h; sourceTree = "<group>"; };
+		95F3A80C20285B7500721309 /* YJPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YJPickerView.m; sourceTree = "<group>"; };
+		95F3A80E2028823F00721309 /* TargetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetCell.h; sourceTree = "<group>"; };
+		95F3A80F2028823F00721309 /* TargetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetCell.m; sourceTree = "<group>"; };
+		95F3A8102028823F00721309 /* TargetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TargetCell.xib; sourceTree = "<group>"; };
 		C20C2B0E0F5D373325ED6B6A /* Pods-NoteMark.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteMark.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoteMark/Pods-NoteMark.release.xcconfig"; sourceTree = "<group>"; };
 		F982C67069ECAA86F83507FB /* Pods-NoteMark.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteMark.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoteMark/Pods-NoteMark.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,15 +176,53 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		959173AF20185CF8008EADDE /* calendar */ = {
+		951506872025B63E0093C769 /* Target */ = {
 			isa = PBXGroup;
 			children = (
-				959173AC20185591008EADDE /* CalendarViewController.h */,
-				959173AD20185591008EADDE /* CalendarViewController.m */,
-				95C4792C200DCCA80079E0EE /* RecordViewController.h */,
-				95C4792D200DCCA80079E0EE /* RecordViewController.m */,
+				951506882025B63E0093C769 /* Controller */,
+				95F3A80720285A5300721309 /* View */,
+				951506992025C9B80093C769 /* Model */,
 			);
-			path = calendar;
+			path = Target;
+			sourceTree = "<group>";
+		};
+		951506882025B63E0093C769 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				951506912025B7850093C769 /* TargetViewController.h */,
+				951506922025B7850093C769 /* TargetViewController.m */,
+				95F3A8042028248400721309 /* TargetNoteViewController.h */,
+				95F3A8052028248400721309 /* TargetNoteViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951506892025B63E0093C769 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				9515068A2025B65D0093C769 /* Controller */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		9515068A2025B65D0093C769 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9515068D2025B65D0093C769 /* RecordViewController.h */,
+				9515068B2025B65D0093C769 /* RecordViewController.m */,
+				9515068C2025B65D0093C769 /* CalendarViewController.h */,
+				9515068E2025B65D0093C769 /* CalendarViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		951506992025C9B80093C769 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9515069A2025C9B80093C769 /* TargetModel.m */,
+				9515069B2025C9B80093C769 /* TargetModel.h */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		95C337EA201B02F8007D35FC /* FDFullscreenPopGesture */ = {
@@ -234,6 +289,8 @@
 		95D221371FD542C500A29600 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				951506892025B63E0093C769 /* Calendar */,
+				951506872025B63E0093C769 /* Target */,
 				95D221381FD542C500A29600 /* Other */,
 				95D221521FD542C500A29600 /* Profile */,
 				95D221531FD542C500A29600 /* Main */,
@@ -335,7 +392,6 @@
 		95D221621FD5433300A29600 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				959173AF20185CF8008EADDE /* calendar */,
 				95D79CD02005E9130036AE2E /* MainViewController.h */,
 				95D79CD12005E9130036AE2E /* MainViewController.m */,
 				959173B020185E0F008EADDE /* RecordLuckyViewController.h */,
@@ -373,6 +429,18 @@
 				95EDA0BE1FD54DC8002C14B8 /* DateUtils.m */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		95F3A80720285A5300721309 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95F3A80B20285B7500721309 /* YJPickerView.h */,
+				95F3A80C20285B7500721309 /* YJPickerView.m */,
+				95F3A80E2028823F00721309 /* TargetCell.h */,
+				95F3A80F2028823F00721309 /* TargetCell.m */,
+				95F3A8102028823F00721309 /* TargetCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +554,7 @@
 			files = (
 				959173BA20187D73008EADDE /* LuckyCell.xib in Resources */,
 				95D221121FD5403600A29600 /* LaunchScreen.storyboard in Resources */,
+				95F3A8122028823F00721309 /* TargetCell.xib in Resources */,
 				95D2210F1FD5403600A29600 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -565,19 +634,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9515068F2025B65D0093C769 /* RecordViewController.m in Sources */,
+				9515069C2025C9B80093C769 /* TargetModel.m in Sources */,
 				95D221551FD542C500A29600 /* NSString+Extension.m in Sources */,
-				95C4792E200DCCA80079E0EE /* RecordViewController.m in Sources */,
 				958DCDF52015B3240087D28A /* YJNavigationViewController.m in Sources */,
+				951506902025B65D0093C769 /* CalendarViewController.m in Sources */,
 				95D79CD22005E9130036AE2E /* MainViewController.m in Sources */,
+				95F3A8112028823F00721309 /* TargetCell.m in Sources */,
+				951506932025B7850093C769 /* TargetViewController.m in Sources */,
 				959173B220185E0F008EADDE /* RecordLuckyViewController.m in Sources */,
 				95D2215C1FD542C500A29600 /* FMDatabasePool.m in Sources */,
 				95D221561FD542C500A29600 /* NSObject+Tips.m in Sources */,
 				95D221581FD542C500A29600 /* DownloadData.m in Sources */,
 				959173B920187D73008EADDE /* LuckyCell.m in Sources */,
 				95D221571FD542C500A29600 /* UIView+Extension.m in Sources */,
+				95F3A80D20285B7500721309 /* YJPickerView.m in Sources */,
+				95F3A8062028248400721309 /* TargetNoteViewController.m in Sources */,
 				95D221611FD5432400A29600 /* AppDelegate.m in Sources */,
 				95D2215D1FD542C500A29600 /* FMResultSet.m in Sources */,
-				959173AE20185591008EADDE /* CalendarViewController.m in Sources */,
 				95D221151FD5403600A29600 /* main.m in Sources */,
 				95C337ED201B02F8007D35FC /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				95D221541FD542C500A29600 /* UIImage+IW.m in Sources */,

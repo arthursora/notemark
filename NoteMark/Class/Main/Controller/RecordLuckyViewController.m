@@ -37,7 +37,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"存" style:UIBarButtonItemStylePlain target:self action:@selector(saveLucky)];
     
-    self.title = @"小幸运";
+    self.title = @"日常记录";
     self.view.backgroundColor = GlobalBGColor;
     
     UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -129,6 +129,15 @@
 }
 
 - (void)setupData {
+    
+    if (_luckyDict) {
+        
+        _inPutTextView.text = _luckyDict[@"content"];
+        NSData *data = _luckyDict[@"imgData"];
+        [_photoButton setImage:[UIImage imageWithData:data] forState:UIControlStateNormal];
+        _photoButton.imageView.contentMode = UIViewContentModeScaleToFill;
+        [_photoButton setTitle:@"" forState:UIControlStateNormal];
+    }
     
     NSLocale *cale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh-CN"];
     self.recognizer = [[SFSpeechRecognizer alloc] initWithLocale:cale];

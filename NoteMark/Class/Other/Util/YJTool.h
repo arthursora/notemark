@@ -7,16 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TargetModel.h"
 
 @interface YJTool : NSObject
 
 + (void)initialize;
 
 #pragma mark 添加记录
-+ (BOOL)addLucky:(NSString *)text image:(NSData *)image;
++ (BOOL)addTarget:(TargetModel *)target;
+
+#pragma mark 删除记录
++ (BOOL)deleteTarget:(NSInteger)targetId;
 
 #pragma mark 查询记录列表
-+ (NSArray *)queryLuckies;
++ (NSMutableArray *)queryTargets;
+
+#pragma mark 添加记录
++ (BOOL)addLucky:(NSString *)text image:(NSData *)image;
+
+#pragma mark 删除记录
++ (BOOL)deleteLucky:(NSInteger)luckyId;
+
+#pragma mark 查询记录列表
++ (NSMutableArray *)queryLuckies;
 
 #pragma mark 添加记录
 + (BOOL)addPeriod:(NSString *)startTime endTime:(NSString *)endTime;
