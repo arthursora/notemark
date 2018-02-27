@@ -11,7 +11,7 @@
 #import "TargetCell.h"
 #import "TargetModel.h"
 
-@interface TargetViewController ()
+@interface TargetViewController () <TargetCellDelegate>
 {
     NSMutableArray *_targets;
 }
@@ -54,6 +54,18 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)targetCellDidMark:(TargetCell *)cell {
+    
+    TargetModel *target = cell.target;
+    
+    BOOL result = [YJTool updateTarget:target];
+    if (result) {
+        [self setupData];
+    }else {
+        [self presentFailureTips:@"一天只能打卡一次哦! "];
+    }
+}
+
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
@@ -64,6 +76,7 @@
     
     TargetCell *cell = [TargetCell cellWithTableView:tableView];
     cell.target = _targets[indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 
@@ -77,7 +90,7 @@
         [_targets removeObject:target];
         
         //        删除单元格的某一行时，在用动画效果实现删除过程
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 

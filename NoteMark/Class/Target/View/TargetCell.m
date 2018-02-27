@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
 @property (weak, nonatomic) IBOutlet UILabel *awardLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
+@property (weak, nonatomic) IBOutlet UILabel *markLabel;
 
 @end
 
@@ -31,6 +32,23 @@
     return cell;
 }
 
+- (void)awakeFromNib {
+    
+    [super awakeFromNib];
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(markSelf)];
+    [_markLabel addGestureRecognizer:tapGesture];
+}
+
+- (void)markSelf {
+    
+    YJLog(@"--targetCellDidMark-- %@", self);
+    if([_delegate respondsToSelector:@selector(targetCellDidMark:)]) {
+        
+        [_delegate targetCellDidMark:self];
+    }
+}
+
 - (void)setTarget:(TargetModel *)target {
     
     _target = target;
@@ -41,20 +59,24 @@
     _progressView.progress = 0;
     if (target.expectDays != 0) {
         
-        _progressView.progress = _target.totalDays / target.expectDays;
+        _progressView.progress = (float)_target.totalDays / target.expectDays;
     }
     if (_progressView.progress == 0.00) {
         _descLabel.text = @"请开始新的旅程";
-    }else if (_progressView.progress > 1) {
+    }else if (_progressView.progress >= 1) {
         _descLabel.text = @"快去领取奖赏吧";
     }else {
-        _descLabel.text = [NSString stringWithFormat:@"需要坚持%ld天，加油", (target.expectDays - target.totalDays)];
+        _descLabel.text = [NSString stringWithFormat:@"仍需坚持%ld天，加油！", (target.expectDays - target.totalDays)];
     }
-}
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+    
+    if (_progressView.progress >= 1) {
+        
+        _markLabel.text = @"";
+        _markLabel.userInteractionEnabled = NO;
+    }else {
+        _markLabel.text = @"打卡";
+        _markLabel.userInteractionEnabled = YES;
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

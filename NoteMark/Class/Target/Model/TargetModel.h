@@ -18,7 +18,7 @@
 //  开始时间
 @property (nonatomic, copy) NSString *startTime;
 
-//  最近一次 连续参与的 开始一天
+//  最近一次 连续参与的 最后一天
 @property (nonatomic, copy) NSString *lastJoinTime;
 
 //  必须打卡的时间段（可以没有）

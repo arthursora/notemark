@@ -16,6 +16,9 @@
 #pragma mark 添加记录
 + (BOOL)addTarget:(TargetModel *)target;
 
+#pragma mark 修改记录
++ (BOOL)updateTarget:(TargetModel *)target;
+
 #pragma mark 删除记录
 + (BOOL)deleteTarget:(NSInteger)targetId;
 
@@ -23,7 +26,7 @@
 + (NSMutableArray *)queryTargets;
 
 #pragma mark 添加记录
-+ (BOOL)addLucky:(NSString *)text image:(NSData *)image;
++ (BOOL)addLucky:(NSString *)text image:(NSData *)image luckyId:(NSInteger)luckyId;
 
 #pragma mark 删除记录
 + (BOOL)deleteLucky:(NSInteger)luckyId;

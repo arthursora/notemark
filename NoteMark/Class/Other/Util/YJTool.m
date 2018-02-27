@@ -44,6 +44,71 @@ static FMDatabase *_db;
     [_db executeUpdate:@"CREATE TABLE IF NOT EXISTS target (id integer PRIMARY KEY AUTOINCREMENT, name text NOT NULL, startTime text NOT NULL, lastJoinTime text, joinTime int NOT NULL, totalDays int, continueDays int, expectDays int NOT NULL, award text NOT NULL);"];
 }
 
++ (BOOL)updateTarget:(TargetModel *)target {
+    
+    BOOL result = NO;
+    
+    NSString *currentTime = [self getCurrentTime];
+    NSInteger joinTime = target.joinTime;
+    if (joinTime != 100) {
+        NSInteger hour = [[currentTime substringWithRange:NSMakeRange(11, 2)] integerValue];
+        if (hour < joinTime - 1 || hour > joinTime + 1) {
+            return result;
+        }
+    }
+    
+    target.totalDays++;
+    
+    NSString *lastJoinTime = target.lastJoinTime;
+    
+    //  第一次打卡，需要把lastJoinTime设为今天
+    if([YJTool isBlankString:lastJoinTime]) {
+        
+        target.lastJoinTime = currentTime;
+        target.continueDays++;
+    }else {
+        
+        /**
+         *  lastJoinTime = currentTime
+         *  根据lastJoinTime和currentTime判断是连续打卡
+         *  连续打卡，continueDays++，
+         *  连续打卡，continueDays=1；
+         */
+        NSInteger days = [self getDifferenceByDate:target.lastJoinTime];
+        target.lastJoinTime = currentTime;
+        
+        if (days == 0) {
+            return result;
+        }
+        
+        if (days == 1) {
+            target.continueDays++;
+        }else {
+            target.continueDays = 1;
+        }
+    }
+    
+    result = [_db executeUpdateWithFormat:@"UPDATE target SET lastJoinTime = %@, continueDays = %ld, totalDays = %ld WHERE id = %ld", target.lastJoinTime, target.continueDays, target.totalDays, target.targetId];
+    
+    [self addLog:@"小目标打卡" result:result];
+    
+    return result;
+}
+
++ (NSInteger)getDifferenceByDate:(NSString *)date {
+    //获得当前时间
+    NSDate *now = [NSDate date];
+    //实例化一个NSDateFormatter对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSDate *oldDate = [dateFormatter dateFromString:date];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    unsigned int unitFlags = NSCalendarUnitDay;
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:oldDate  toDate:now  options:0];
+    return [comps day];
+}
+
 #pragma mark 添加小目标
 + (BOOL)addTarget:(TargetModel *)target {
     
@@ -112,11 +177,17 @@ static FMDatabase *_db;
 }
 
 #pragma mark 添加记录
-+ (BOOL)addLucky:(NSString *)text image:(NSData *)image {
++ (BOOL)addLucky:(NSString *)text image:(NSData *)image luckyId:(NSInteger)luckyId {
     
     NSString *recordDate = [self getCurrentTime];
     
-    BOOL result = [_db executeUpdateWithFormat:@"INSERT INTO lucky(recordDate, content, imgData) values (%@, %@, %@)", recordDate, text, image];
+    BOOL result;
+    if (luckyId == 0) {
+        
+        result = [_db executeUpdateWithFormat:@"INSERT INTO lucky(recordDate, content, imgData) values (%@, %@, %@)", recordDate, text, image];
+    }else {
+        result = [_db executeUpdateWithFormat:@"UPDATE lucky SET content = %@, imgData  = %@ WHERE id = %ld", text, image, luckyId];
+    }
     
     [self addLog:@"增加小幸运" result:result];
     return result;

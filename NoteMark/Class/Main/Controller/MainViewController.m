@@ -153,7 +153,7 @@
         
         //        通过获取的索引值删除数组中的值
         NSDictionary *luckyDict = _records[indexPath.row];
-        [YJTool deleteTarget:[luckyDict[@"id"] intValue]];
+        [YJTool deleteLucky:[luckyDict[@"id"] intValue]];
         [_records removeObject:luckyDict];
         
         //        删除单元格的某一行时，在用动画效果实现删除过程

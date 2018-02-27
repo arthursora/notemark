@@ -109,6 +109,7 @@
             [timeLabel addGestureRecognizer:tapGesture];
             
             _joinTimeLabel = timeLabel;
+            _joinTimeLabel.text = @"  任性，就不选，哈哈哈";
             
         }else if (i == 2) {
             

@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "TargetModel.h"
+@class TargetCell;
+
+@protocol TargetCellDelegate <NSObject>
+
+- (void)targetCellDidMark:(TargetCell *)cell;
+
+@end
 
 @interface TargetCell : UITableViewCell
 
 @property (nonatomic, strong) TargetModel *target;
+
+@property (nonatomic, weak) id<TargetCellDelegate> delegate;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 

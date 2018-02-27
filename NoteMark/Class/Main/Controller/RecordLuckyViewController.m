@@ -119,7 +119,7 @@
         
         //先把图片转成NSData
         UIImage *image = [info objectForKey:@"UIImagePickerControllerEditedImage"];
-        _photoButton.imageView.contentMode = UIViewContentModeScaleToFill;
+        _photoButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
         [_photoButton setImage:image forState:UIControlStateNormal];
         [_photoButton setTitle:@"" forState:UIControlStateNormal];
         
@@ -250,10 +250,16 @@
 - (void)saveLucky {
     
     [self presentLoadingTips:@""];
+    
+    NSInteger luckyId = 0;
+    if (_luckyDict) {
+        luckyId = [_luckyDict[@"id"] integerValue];
+    }
+    
     NSString *text = _inPutTextView.text;
     UIImage *image = [_photoButton imageForState:UIControlStateNormal];
     NSData *data = UIImageJPEGRepresentation(image, 0.4);
-    [YJTool addLucky:text image:data];
+    [YJTool addLucky:text image:data luckyId:luckyId];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"luckyAdded" object:nil];
     [self dismissTips];
